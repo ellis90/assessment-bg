@@ -62,7 +62,7 @@ func (cs *CustomerService) Create(ctx echo.Context) error {
 	if err != nil {
 		return utils.JSON(ctx, "save", http.StatusBadRequest, err)
 	}
-	return utils.JSON(ctx, Successful, http.StatusOK, out.GetExportedCustomer())
+	return utils.JSON(ctx, Successful, http.StatusCreated, out.GetExportedCustomer())
 }
 
 func (cs *CustomerService) Update(ctx echo.Context) error {

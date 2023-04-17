@@ -29,16 +29,15 @@ func main() {
 		"postgres://%s:%s@%s:%s/%s?sslmode=disable", dbUSER, pass, host, dbPort, dbName)
 	log.Println(src)
 
-	os, err := service.NewCustomerServices(
+	cs, err := service.NewCustomerServices(
 		service.WithPGXConfiguration(log.New(), src),
 	)
 	if err != nil {
 		log.Fatal("failed to create service")
 	}
 
-	e := router.Router(os)
+	e := router.Router(cs)
 	if err := e.Start(":9090"); err != nil {
 		log.Fatal("failed to start up server")
 	}
-
 }
