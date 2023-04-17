@@ -32,7 +32,7 @@ start:
 downV:
 	docker-compose down -v
 
-logf:
-	docker logs -f
+log_api:
+	docker logs -f integra_api
 
-.PHONY: mock migrate_sql createdb dropdb migrateup migratedown setup reBuild down start logf
+.PHONY: mock migrate_sql createdb dropdb migrateup migratedown setup reBuild down start log_api
