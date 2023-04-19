@@ -86,7 +86,7 @@ func (s *Store) Update(cus model.Customer) (model.Customer, error) {
 		squirrel.Eq{"id": cus.GetID()},
 	).Exec()
 	if err != nil {
-		return model.Customer{}, fmt.Errorf(errorMsg, ErrUpdateCustomer, err)
+		return model.Customer{}, fmt.Errorf(errorMsg, ErrDeleteCustomer, err)
 	}
 	return cus, nil
 }
@@ -121,7 +121,7 @@ func (s *Store) Delete(id string) error {
 		usersSchema,
 	).Where(squirrel.Eq{"id": id}).Exec()
 	if err != nil {
-		fmt.Errorf(errorMsg, ErrDeleteCustomer, err)
+		return fmt.Errorf(errorMsg, ErrDeleteCustomer, err)
 	}
 	return nil
 }
